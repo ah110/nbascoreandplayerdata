@@ -79,5 +79,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ###Test case
 
 [Test Case for csi4103-pair-project.pdf](https://github.com/ah110/nbascoreandplayerdata/blob/master/Test%20Case%20for%20csi4103-pair-project.pdf)
-![This is an image](https://github.com/ah110/nbascoreandplayerdata/blob/master/Test%20Case%20for%20csi4103-pair-project.pdf)
+
 
