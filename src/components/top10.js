@@ -19,13 +19,13 @@ class Top10 extends Component {
 
  
     getPageNum= () => { 
-          axios.get(`https://www.balldontlie.io/api/v1/stats?seasons[]=2022&start_date=${this.state.startDate.toISOString()}&end_date=${this.state.endDate.toISOString()}&per_page=100`)
+          axios.get(`https://www.balldontlie.io/api/v1/stats?start_date=${this.state.startDate.toISOString()}&end_date=${this.state.endDate.toISOString()}&per_page=100`)
             .then(async res => {
                this.getTop10(res.data.meta.total_pages);
              
             }).catch(err => {
               console.log(err);
-              alert("An error occurred while retrieving the information. Please try again later.");
+              alert("An error occurred while retrieving the information. ");
             });
         }
 
@@ -33,7 +33,7 @@ class Top10 extends Component {
             let allstats= [];
             let promises = [];
             for (var i=1; i < pageNum+1; i++) {
-              promises.push(axios.get(`https://www.balldontlie.io/api/v1/stats?seasons[]=2022&start_date=${this.state.startDate.toISOString()}&end_date=${this.state.endDate.toISOString()}&page=${i}&per_page=100`));
+              promises.push(axios.get(`https://www.balldontlie.io/api/v1/stats?start_date=${this.state.startDate.toISOString()}&end_date=${this.state.endDate.toISOString()}&page=${i}&per_page=100`));
             }
           
             Promise.all(promises)
@@ -117,9 +117,11 @@ class Top10 extends Component {
         
             return (
               <div>
-                <button> <Link to={{ pathname: "/player/0" }}>Player Search
+                <button> <Link to={{ pathname: "/" }}>Home
                 </Link></button>
-                <button> <Link to={{ pathname: "/game" }}>Games
+                <button> <Link to={{ pathname: "/nba/player/0" }}>Player Search
+                </Link></button>
+                <button> <Link to={{ pathname: "/nba/game" }}>Games
                 </Link></button>
              <form onSubmit={this.handleSubmit}>
           <DatePicker

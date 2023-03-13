@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Start from "./components/start";
 import Playerid from './components/playerid';
 import Top10 from './components/top10';
+import Home from './components/home';
 
 
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
@@ -13,9 +14,10 @@ class App extends Component {
     return (
       <Router>
         <Routes>
-        <Route path="/game" element={<Start/>} />
-          <Route path="/" element={<Top10 />} />
-          <Route path="/player/:id" element={<Playerid />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/nba/game" element={<Start/>} />
+          <Route path="/nba/rank" element={<Top10 />} />
+          <Route path="/nba/player/:id" element={<Playerid />} />
         </Routes>
       </Router>
     );

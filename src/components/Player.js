@@ -124,13 +124,18 @@ class player extends Component {
     const {suggestions}=this.state;
     return (
       <div className="App">  
-       <button className="nba-nav-btn">
+      <button className="nba-nav-btn">
         <Link to={{ pathname: "/" }}>
+          Home
+        </Link>
+      </button>
+       <button className="nba-nav-btn">
+        <Link to={{ pathname: "/nba/rank" }}>
           Player Rank
         </Link>
       </button>
       <button className="nba-nav-btn">
-        <Link to={{ pathname: "/game" }}>
+        <Link to={{ pathname: "/nba/game" }}>
           Games
         </Link>
       </button>
