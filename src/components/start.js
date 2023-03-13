@@ -31,7 +31,7 @@ class Start extends Component {
     Games
   </button>
   <button className={`nba-nav-btn ${this.state.showHideGame ? "" : "active"}`}>
-  <Link to={{ pathname: "/" }}>Home</Link>
+  <Link to={{ pathname: "/nba/Player/0" }}>Player Search</Link>
 </button>
   <button className={`nba-nav-btn ${this.state.showHideGame ? "" : "active"}`}>
   <Link to={{ pathname: "/nba/Player/0" }}>Player Search</Link>
