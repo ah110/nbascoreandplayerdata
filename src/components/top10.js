@@ -19,7 +19,7 @@ class Top10 extends Component {
 
  
     getPageNum= () => { 
-          axios.get(`https://www.balldontlie.io/api/v1/stats?start_date=${this.state.startDate.toISOString()}&end_date=${this.state.endDate.toISOString()}&per_page=100`)
+          axios.get(`https://www.balldontlie.io/api/v1/stats?start_date=${this.state.endDate.toISOString()}&end_date=${this.state.startDate.toISOString()}&per_page=100`)
             .then(async res => {
                this.getTop10(res.data.meta.total_pages);
              
@@ -33,7 +33,7 @@ class Top10 extends Component {
             let allstats= [];
             let promises = [];
             for (var i=1; i < pageNum+1; i++) {
-              promises.push(axios.get(`https://www.balldontlie.io/api/v1/stats?start_date=${this.state.startDate.toISOString()}&end_date=${this.state.endDate.toISOString()}&page=${i}&per_page=100`));
+              promises.push(axios.get(`https://www.balldontlie.io/api/v1/stats?start_date=${this.state.endDate.toISOString()}&end_date=${this.state.startDate.toISOString()}&page=${i}&per_page=100`));
             }
           
             Promise.all(promises)
@@ -92,11 +92,12 @@ class Top10 extends Component {
 
           handleStartDateChange = (date) => {
             this.setState({ startDate: date });
+            const previousDay = new Date(date);
+            previousDay.setDate(previousDay.getDate() - 1);
+            this.setState({ endDate: previousDay });
           };
         
-          handleEndDateChange = (date) => {
-            this.setState({ endDate: date });
-          };
+      
         
           render() {
             let top10 = this.state.stats
@@ -106,7 +107,7 @@ class Top10 extends Component {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
-          <Link to={{ pathname: "/player/" + stat.player.id }}>
+          <Link to={{ pathname: "/nba/player/" + stat.player.id }}>
             {stat.player.first_name} {stat.player.last_name}
           </Link>
         </td>
@@ -117,24 +118,20 @@ class Top10 extends Component {
         
             return (
               <div>
-                <button> <Link to={{ pathname: "/" }}>Home
+                <button className="nba-nav-btn"> <Link to={{ pathname: "/" }}>Home
                 </Link></button>
-                <button> <Link to={{ pathname: "/nba/player/0" }}>Player Search
+                <button className="nba-nav-btn"> <Link to={{ pathname: "/nba/player/0" }}>Search
                 </Link></button>
-                <button> <Link to={{ pathname: "/nba/game" }}>Games
+                <button className="nba-nav-btn"> <Link to={{ pathname: "/nba/game" }}>Games
                 </Link></button>
              <form onSubmit={this.handleSubmit}>
           <DatePicker
             selected={this.state.startDate}
             onChange={this.handleStartDateChange}
-            placeholderText="Start Date"
+            placeholderText="Date"
           />
-          <DatePicker
-            selected={this.state.endDate}
-            onChange={this.handleEndDateChange}
-            placeholderText="End Date"
-          />
-          <button type="submit">Get Top 10 Players</button>
+        
+          <button type="submit" className="nba-nav-btn">Get Stats</button>
         </form>
                 <h2>Top 10 NBA Players Stat base on date:</h2>
                 <select onChange={this.handleStatChange} value={this.state.selectedStat}>

@@ -153,6 +153,7 @@ div.nba-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  align-items: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -172,7 +173,7 @@ div.nba-header {
   border-right: 1px solid black;
   border-left: 1px solid black;
   border-top: 1px solid black;
-  cursor: pointer;
+  
 }
 
 .nba-nav-btn a {
@@ -493,4 +494,62 @@ div.nba-header {
   background: url("../imgs/wizards.png") no-repeat;
   background-size: cover;
 }
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.home-title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.home-text {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.home-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.home-button {
+  height: 60px;
+  width: 100px;
+  padding: 5px;
+  font-size: 1.3rem;
+  background-color: var(--primaryColorNBA);
+  outline: 0;
+  border: 0;
+  margin: 4px 2px;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.nba-button {
+
+  color: black;
+}
+
+.soccer-button {
+  
+  color: black;
+}
+
+.home-button:hover {
+  transform: scale(1.05);
+}
+
 /*# sourceMappingURL=style.css.map */

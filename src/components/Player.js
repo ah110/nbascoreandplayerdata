@@ -131,7 +131,7 @@ class player extends Component {
       </button>
        <button className="nba-nav-btn">
         <Link to={{ pathname: "/nba/rank" }}>
-          Player Rank
+          Rank
         </Link>
       </button>
       <button className="nba-nav-btn">
@@ -140,7 +140,6 @@ class player extends Component {
         </Link>
       </button>
       <label>
-        Player Name
         <input 
           type="text"
           value={this.state.playerName}
@@ -151,7 +150,7 @@ class player extends Component {
           <ul>
             {suggestions.map((suggestion) => (
               <li onClick={() => this.getPlayerStatsID(suggestion)}>
-                <Link to={{ pathname: "/player/" + suggestion.id }}>
+                <Link to={{ pathname: "/nba/player/" + suggestion.id }}>
                   {suggestion.first_name} {suggestion.last_name}
                 </Link>
               </li>
@@ -162,7 +161,7 @@ class player extends Component {
       <br />
       <label for="years">Season (between 1979 and 2022):</label>
       <input type="number" id="season"  min="1979" max="2022" value={this.state.season} onChange={this.playerSeasomHandleChange}></input>
-      <Button bsstyle="info" onClick={() =>  {
+      <Button bsstyle="info" className="nba-nav-btn" onClick={() =>  {
         this.getPlayerId();
       }}>
         Submit
